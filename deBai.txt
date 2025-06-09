@@ -1,0 +1,21 @@
+Mục tiêu:
+Viết một form HTML dùng Bootstrap 5 cho phép người dùng nhập thông tin yêu cầu báo giá dịch vụ. Sau khi nhấn "Gửi", dữ liệu sẽ được kiểm tra hợp lệ và hiển thị lại trên trang .
+
+🎯 Yêu cầu kỹ thuật:
+HTML + Bootstrap 5:
+
+Giao diện form gồm ít nhất 7 trường như: Họ tên, Email, Công ty, Dịch vụ, Ngân sách, Ghi chú,...
+
+JavaScript:
+
+Khi người dùng nhấn "Gửi", dùng JavaScript để tạo một object chứa toàn bộ dữ liệu từ form.
+
+Ví dụ:
+
+Không được dùng biến riêng lẻ cho từng trường như let name = ..., let email = ... – phải gom lại thành object.
+
+Hiển thị lại dữ liệu:
+
+Khi bấm nút submit thì form sẽ ẩn đi, phần thông tin sẽ hiện ra.
+
+Link github gợi ý giao diện: https://github.com/khaitruong1301/bt_js_object_form_bao_gia_dich_vu
