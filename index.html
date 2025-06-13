@@ -6,21 +6,188 @@
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- FontAwesome 6.2.0 CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Bootstrap CSS v5.2.1 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <!-- Animation WOW -->
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <!-- Quick Style -->
+    <style>
+        body {
+            background: url(/src/Dark.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
 
-        
+        .yeuCau,
+        .ketQua {
+            border: solid #777777 1px;
+            background: #96969666;
+        }
+
+        .trollxe {
+            background: url(/src/trollxe.png);
+            background-size: contain;
+            background-repeat: no-repeat;
+            width: 25%;
+            height: 50px;
+        }
+
+        #btnYeuCau,
+        #btnNewForm {
+            border: solid #999999 3px;
+            background-color: transparent;
+            box-shadow: inset 8px -4px 33px -8px rgba(255, 255, 255, 0.5);
+        }
+
+        #btnYeuCau:hover,
+        #btnNewForm:hover {
+            box-shadow: 8px -4px 33px -8px rgba(255, 255, 255, 0.5);
+        }
+
+        h6 {
+            color: white;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .list-group li {
+            background: transparent;
+        }
+    </style>
+
 </head>
 
 <body>
-    
-    <div class="container">
 
+    <div class="container mx-auto my-5">
+        <div class="yeuCau shadow w-50 rounded-5 p-5 yeu-cau mx-auto animate__animated animate__zoomIn">
+            <h2 class="text-center text-white">Yêu cầu báo giá xe</h2>
+            <form class="form-group" id="frmYeuCau">
+                <div>
+                    <h6 for="">Họ và tên</h6>
+                    <input name="hoTen" title="Họ và tên" type="text" class="form-control input rounded-5">
+                </div>
+                <div>
+                    <h6 for="">Email liên hệ</h6>
+                    <input name="email" title="Email liên hệ" type="text" class="form-control input rounded-5">
+                </div>
+                <div>
+                    <h6 for="">Số điện thoại</h6>
+                    <input name="soDienThoai" title="Số điện thoại" type="number" class="form-control input rounded-5">
+                </div>
+                <div class="mb-3">
+                    <h6 for="slider" class="form-label">Ngân sách dự kiến (triệu VNĐ)</h6>
+
+                    <div class="d-flex flex-column justify-content-between">
+                        <div class="d-flex justify-content-between">
+                            <span id="minValue" class="d-inline text-white">200</span>
+                            <span id="maxValue" class="d-inline text-white">5000</span>
+                        </div>
+                        <input type="range" class="form-range mt-2 input" min="200000000" max="5000000000"
+                            step="10000000" id="slider" value="1000000000" title="Ngân sách dự kiến" name="nganSach">
+                    </div>
+                    <span id="currentValue" class="fw-bold text-white">1.000.000.000</span>
+                    <span class="fw-bold text-white"> đ</span>
+                </div>
+                <div>
+                    <h6 for="">Chọn phân khúc</h6>
+                    <select name="phanKhuc" title="Phân khúc" id="PKKhac" class="form-control input rounded-5"
+                        onchange="khacOption('PKKhac')">
+                        <option value="Chưa chọn" class="">-- Vui lòng chọn --</option>
+                        <option value="A" class="">A</option>
+                        <option value="B" class="">B</option>
+                        <option value="C" class="">C</option>
+                        <option value="D" class="">D</option>
+                        <option value="E" class="">E</option>
+                        <option value="Khác" class="">Khác</option>
+                    </select>
+                    <div class="inputKhac d-none" id="inputPKKhac">
+                        <input type="text" class="form-control mt-2 animate__animated animate__slideInDown rounded-5"
+                            placeholder="Nhập phân khúc bạn muốn">
+                    </div>
+                </div>
+                <div>
+                    <h6 for="">Chọn thương hiệu</h6>
+                    <select name="thuongHieu" title="Thương hiệu" id="THKhac" class="form-control input rounded-5"
+                        onchange="khacOption('THKhac')">
+                        <option value="Chưa chọn">-- Vui lòng chọn --</option>
+                        <option value="kia">KIA</option>
+                        <option value="mazda">Mazda</option>
+                        <option value="toyota">Toyota</option>
+                        <option value="huyndai">Huyndai</option>
+                        <option value="honda">Honda</option>
+                        <option value="vinfast">Vinfast</option>
+                        <option value="mercedes">Mercedes Benz</option>
+                        <option value="bmw">BMW</option>
+                        <option value="audi">Audi</option>
+                        <option value="Khác">Khác</option>
+                    </select>
+                    <div class="inputKhac d-none" id="inputTHKhac">
+                        <input type="text" class="form-control mt-2 animate__animated animate__slideInDown rounded-5"
+                            placeholder="Nhập thương hiệu bạn muốn">
+                    </div>
+                </div>
+                <div>
+                    <h6 for="">Chọn loại xe</h6>
+                    <div class="btn-group w-50 d-flex justify-content-between" role="group"
+                        aria-label="Basic radio toggle button group">
+                        <div>
+                            <input type="radio" class="input" name="btnradio" id="btnradio1" autocomplete="off"
+                                title="Loại xe" value="Xe xăng">
+                            <label class="text-white" for="btnradio1">Xe xăng</label>
+                        </div>
+                        <div>
+                            <input type="radio" class="input" name="btnradio" id="btnradio2" autocomplete="off"
+                                title="Loại xe" value="Xe điện">
+                            <label class="text-white" for="btnradio2">Xe điện</label>
+                        </div>
+                        <div>
+                            <input type="radio" class="input" name="btnradio" id="btnradio3" autocomplete="off"
+                                title="Loại xe" value="Cả 2" checked>
+                            <label class="text-white" for="btnradio3">Cả 2</label>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h6 for="">Ghi chú</h6>
+                    <textarea class="form-control input" title="Ghi chú"></textarea>
+                </div>
+                <div class="d-flex justify-content-between align-items-center mt-5">
+                    <div class="trollxe"></div>
+                    <button class="btn btn-success d-block rounded-5 w-25" id="btnYeuCau" type="submit">Gửi
+                        <svg viewBox="0 0 12 13" width="20" height="20" fill="currentColor" aria-hidden="true"
+                            class="xfx01vb x1lliihq x1tzjh5l x1k90msu x2h7rmj x1qfuztq"
+                            style="--color: var(--primary-icon);">
+                            <g fill-rule="evenodd" transform="translate(-450 -1073)">
+                                <path
+                                    d="m458.371 1079.75-6.633.375a.243.243 0 0 0-.22.17l-.964 3.255c-.13.418-.024.886.305 1.175a1.08 1.08 0 0 0 1.205.158l8.836-4.413c.428-.214.669-.677.583-1.167-.06-.346-.303-.633-.617-.79l-8.802-4.396a1.073 1.073 0 0 0-1.183.14c-.345.288-.458.77-.325 1.198l.963 3.25c.03.097.118.165.22.17l6.632.375s.254 0 .254.25-.254.25-.254.25">
+                                </path>
+                            </g>
+                        </svg></button>
+                </div>
+
+            </form>
+        </div>
+        <div class="ketQua shadow w-50 mx-auto rounded-5 p-5 d-none ket-qua animate__animated animate__zoomIn">
+            <h2 class="text-center text-white">Gửi yêu cầu thành công</h2>
+            <div>
+                <ul class="list-group list-group-flush">
+                </ul>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mt-3">
+                <div class="trollxe"></div>
+                <button class="btn btn-primary rounded-5 w-25" id="btnNewForm">Tạo mới</button>
+            </div>
+
+        </div>
     </div>
-
-
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
